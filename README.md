@@ -1,15 +1,17 @@
-#=========================================================
-#  ____  _         ___ ___  
-# | __ )(_) __ _  |_ _/ _ \ 
-# |  _ \| |/ _` |  | | | | |
-# | |_) | | (_| |  | | |_| |
-# |____/|_|\__, | |___\___/ 
-#          |___/            
-# -> Heavy-Duty File Management Library
-#=========================================================
+```text
+=========================================================
+  ____  _         ___ ___  
+ | __ )(_) __ _  |_ _/ _ \ 
+ |  _ \| |/ _` |  | | | | |
+ | |_) | | (_| |  | | |_| |
+ |____/|_|\__, | |___\___/ 
+          |___/            
+ -> Heavy-Duty File Management Library
+=========================================================
+```
 **BigIO** is a robust Java library designed to handle file operations with a focus on memory efficiency and architectural cleanlines. It provides a specialized dual-track system to distinguish between standard assets and massive data files, ensuring your JVM remains stable even when dealing with high-resolution images, large audio buffers, or heavy binary data[cite: 1].
 
-## 🚀 Key Features
+## Key Features
 
 *   **Dual-Layer Architecture**: Separate modules for `basicFiles` (lightweight) and `bigFiles` (resource-intensive) to optimize memory footprint.
 *   **Instance Uniqueness (Registry)**: The `BigFileRegistry` ensures that a single physical file is represented by exactly one object in memory, preventing redundant allocations and synchronization conflicts.
@@ -17,7 +19,7 @@
 *   **Path Normalization**: Automatic conversion of relative paths to absolute paths within the registry to maintain data integrity across different execution contexts.
 *   **Decoupled Factories**: Implementation of the Factory Pattern to isolate instantiation logic from business logic, making the API easy to extend[cite: 1].
 
-## 📂 Project Structure
+## Project Structure
 
 The library is organized into two main packages based on performance requirements:
 
@@ -31,7 +33,7 @@ The core of the library, built for high-performance and large-scale data handlin
 *   **Optimization**: Utilizes the `BigFileRegistry` for thread-safe instance sharing[cite: 1].
 *   **Error Handling**: Centralized through `BigFileReaderException` to provide clear feedback during disk I/O or resource resolution failures[cite: 1].
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Installation
 Simply include the `bigio` source folders in your project and import the required components:
@@ -60,7 +62,7 @@ try {
 BigFile data = BigTabularFileReader.getInstance().loadFromResources("data/stats.csv");
 ```
 
-## 🏗️ Technical Architecture
+## Technical Architecture
 
 BigIO follows strict software engineering principles:
 *   **Singleton Pattern**: Readers and Factories are singletons to provide global access points and manage state consistently[cite: 1].
