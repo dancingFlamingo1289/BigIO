@@ -1,12 +1,14 @@
-#=========================================================
-#  ____  _         ___ ___  
-# | __ )(_) __ _  |_ _/ _ \ 
-# |  _ \| |/ _` |  | | | | |
-# | |_) | | (_| |  | | |_| |
-# |____/|_|\__, | |___\___/ 
-#          |___/            
-# -> Heavy-Duty File Management Library
-#=========================================================
+```text
+=========================================================
+  ____  _         ___ ___  
+ | __ )(_) __ _  |_ _/ _ \ 
+ |  _ \| |/ _` |  | | | | |
+ | |_) | | (_| |  | | |_| |
+ |____/|_|\__, | |___\___/ 
+          |___/            
+ -> Heavy-Duty File Management Library
+=========================================================
+```
 **BigIO** is a robust Java library designed to handle file operations with a focus on memory efficiency and architectural cleanlines. It provides a specialized dual-track system to distinguish between standard assets and massive data files, ensuring your JVM remains stable even when dealing with high-resolution images, large audio buffers, or heavy binary data[cite: 1].
 
 ## 🚀 Key Features
