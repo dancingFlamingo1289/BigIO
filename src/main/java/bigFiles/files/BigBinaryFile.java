@@ -32,26 +32,33 @@ public class BigBinaryFile extends BigFile {
 
     // ========== CORE INDEXING LOGIC ==========
 
+    /**
+     * Builds the index for the binary file.
+     * Currently optimized for single-object or flat binary structures.
+     * 
+     * @throws IOException if an I/O error occurs during indexing.
+     */
     @Override
     public void buildIndex() throws IOException {
         lock.writeLock().lock();
         try {
             index.clear();
             totalElements = 0;
-            if (!exists() || file.length() == 0) return;
+
+            // Quick validation: if the file doesn't exist or is empty, stop here.
+            if (!exists() || file.length() == 0) {
+                return;
+            }
 
             try (FileInputStream fis = new FileInputStream(file)) {
-                long currentPos = 0;
-                while (fis.available() > 0) {
+                // Since we treat the file as a single-object collection for now,
+                // an 'if' statement is more appropriate and readable than a loop.
+                if (fis.available() > 0) {
+                    long currentPos = 0;
                     index.add(currentPos);
-                    try (CustomObjectInputStream ois = new CustomObjectInputStream(new FileInputStream(file))) {
-                        ois.skipBytes((int) currentPos); // This is a simplification
-                        // In a real 'Big' binary file, you'd store lengths or use a custom header
-                        // For now, we'll index objects by tracking the stream position
-                    }
-                    // For standard Java Serialization, indexing is complex without custom headers.
-                    // To keep it simple and 'Big', we treat the file as a collection of objects.
-                    break; // Default behavior for a single-object binary file
+
+                    // Note: We avoid recreating multiple InputStreams to preserve resources.
+                    // Object reading logic can be expanded here as the library evolves.
                 }
                 totalElements = index.size();
             }
@@ -159,10 +166,5 @@ public class BigBinaryFile extends BigFile {
         protected void writeStreamHeader() throws IOException {
             reset(); // Do not write a new header
         }
-    }
-
-    /** Dummy class for indexing logic */
-    private static class CustomObjectInputStream extends ObjectInputStream {
-        public CustomObjectInputStream(InputStream in) throws IOException { super(in); }
     }
 }

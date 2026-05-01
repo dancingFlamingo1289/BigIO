@@ -55,9 +55,7 @@ public abstract class BigFile {
         this.fileName = fileName.replace(this.extension, "") + this.extension;
         this.folder = folder;
 
-        if (this.folder != null && this.folder.mkdirs()) {
-            // Optional: Log folder creation
-        }
+        if (this.folder != null && this.folder.mkdirs());
 
         this.file = new File(this.folder, this.fileName);
         this.index = new ArrayList<>();

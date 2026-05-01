@@ -115,7 +115,6 @@ public class BinaryFile extends BaseFile {
 
 		try (FileOutputStream out = new FileOutputStream(file)) {
 			// Overwrites with an empty file
-			;
 		} catch (IOException e) {
 			System.err.println("Error while clearing the file: " + e.getMessage());
 			throw e;
@@ -134,9 +133,7 @@ public class BinaryFile extends BaseFile {
 			if (deleted) {
 //				System.out.println("File " + file.getName() + " was physically deleted.");
 				content = null;
-			} else {
-//				System.err.println("Failed to physically delete file: " + file.getName());
-			}
+			} 
 			return deleted;
 		} else {
 			//System.out.println("File does not exist: " + file.getName());
